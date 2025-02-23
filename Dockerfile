@@ -1,5 +1,7 @@
 # Build frontend
 FROM oven/bun:1 as frontend-builder
+ARG VITE_API_URL=/api/v1
+ENV VITE_API_URL=$VITE_API_URL
 WORKDIR /app
 COPY web/ ./
 RUN bun install && bun run build

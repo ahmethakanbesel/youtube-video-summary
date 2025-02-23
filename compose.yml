@@ -9,4 +9,5 @@ services:
       - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
       - PORT=${PORT:-8080}
       - DISABLE_CORS=${DISABLE_CORS:-false}
+      - VITE_API_URL=/api/v1 
     restart: unless-stopped

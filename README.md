@@ -4,9 +4,22 @@ This project is a tool that generates YouTube video summaries using popular LLM 
 
 ## Usage
 
+### Pre-built Binary
+
+1. Download the latest release for your operating system (Windows, macOS, or Linux) from the [releases page](https://github.com/ahmethakanbesel/youtube-video-summary/releases).
+2. Extract the downloaded archive
+3. Run the executable file
+4. Access the web interface at `http://localhost:8080`
+
+Default port can be changed by setting the `PORT` environment variable.
+
+### Building from source
+
 You can quick start it on your computer with the following command:
 
 ```bash
+git clone https://github.com/ahmethakanbesel/youtube-video-summary
+cd youtube-video-summary
 docker compose up -d
 ```
 

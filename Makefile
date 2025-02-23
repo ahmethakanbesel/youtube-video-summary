@@ -5,6 +5,9 @@ start:
 	DISABLE_CORS=true go run cmd/server/main.go
 
 build:
+	cd web && bun install && bun run build
+	mkdir -p cmd/server/dist
+	cp -rv web/dist/* cmd/server/dist/
 	go build -o bin/server cmd/server/main.go
 
 build-snapshot:

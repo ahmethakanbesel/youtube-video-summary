@@ -4,7 +4,22 @@ project_name: youtube-video-summary
 
 before:
   hooks:
-    - mkdir -p cmd/server/dist && cd web && bun install && bun run build && cd .. && cp -rv web/dist/* cmd/server/dist/
+    - mkdir -p cmd/server/dist
+    - |
+      cd web && \
+      if ! command -v bun &> /dev/null; then
+        echo "Bun is not installed" && exit 1
+      fi && \
+      bun install --frozen-lockfile && \
+      bun run build && \
+      cd .. && \
+      if [ ! -d "web/dist" ]; then
+        echo "web/dist directory was not created" && exit 1
+      fi && \
+      cp -rv web/dist/* cmd/server/dist/ && \
+      if [ ! -d "cmd/server/dist" ]; then
+        echo "cmd/server/dist directory is missing" && exit 1
+      fi
 
 builds:
   - env: [CGO_ENABLED=0]
@@ -25,3 +40,14 @@ builds:
       - -X main.date={{.Date}}
 
 dist: dist
+
+checksum:
+  name_template: 'checksums.txt'
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'

@@ -1,0 +1,8 @@
+linters:
+  enable:
+    - unused # finds unused variables and functions
+    - ineffassign # detects when assignments to existing variables are not used
+    - errcheck # checks for unchecked errors
+    - gosimple # simplifies code
+    - govet # reports suspicious constructs
+    - staticcheck # comprehensive checks

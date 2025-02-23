@@ -1,0 +1,75 @@
+:root {
+  --primary: #ff3e00;
+  --secondary: #40b3ff;
+  --background: #f9f4ef;
+  --text: #020826;
+  --shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+.neo-brutal-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 3px solid var(--text);
+  background: white;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.neo-brutal-input:focus {
+  outline: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.9);
+}
+
+.neo-brutal-card {
+  background: white;
+  border: 3px solid var(--text);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: var(--shadow);
+  width: 98%;
+}
+
+.neo-brutal-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border: 3px solid var(--text);
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.neo-brutal-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.9);
+}
+
+.collapsible {
+  cursor: pointer;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: var(--secondary);
+  border: 3px solid var(--text);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .neo-brutal-input,
+  .neo-brutal-card {
+    margin: 0.5rem 0;
+  }
+}

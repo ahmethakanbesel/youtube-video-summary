@@ -45,7 +45,7 @@ function formatTime(seconds: number): string {
   return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || '/api/v1';
 
 export async function getVideoSummary(url: string): Promise<VideoSummary> {
   try {

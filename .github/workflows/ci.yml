@@ -54,6 +54,20 @@ jobs:
     - uses: actions/setup-go@v2
       with:
         go-version: ${{ matrix.go-version }}
+    
+    - uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
+
+    - name: Build frontend
+      run: |
+        cd web
+        bun install
+        bun run build
+        cd ..
+        mkdir -p cmd/server/dist
+        cp -rv web/dist/* cmd/server/dist/
+
     - run: make check-fmt
     - run: make vet
     - run: go install honnef.co/go/tools/cmd/staticcheck@latest
@@ -76,4 +90,18 @@ jobs:
     - uses: actions/setup-go@v2
       with:
         go-version: ${{ matrix.go-version }}
+    
+    - uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
+
+    - name: Build frontend
+      run: |
+        cd web
+        bun install
+        bun run build
+        cd ..
+        mkdir -p cmd/server/dist
+        cp -rv web/dist/* cmd/server/dist/
+
     - run: make test SKIP_INTEGRATION=true

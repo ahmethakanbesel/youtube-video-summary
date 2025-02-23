@@ -4,6 +4,9 @@ BUILD := `git rev-parse --short HEAD`
 start:
 	DISABLE_CORS=true go run cmd/server/main.go
 
+build:
+	go build -o bin/server cmd/server/main.go
+
 build-snapshot:
 	@goreleaser build --snapshot --clean
 

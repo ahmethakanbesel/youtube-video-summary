@@ -34,3 +34,9 @@ changelog:
       - '^docs:'
       - '^test:'
       - '^ci:'
+
+archives:
+  - format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip

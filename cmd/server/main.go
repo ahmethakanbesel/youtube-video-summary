@@ -13,9 +13,7 @@ import (
 	"time"
 
 	"github.com/ahmethakanbesel/youtube-video-summary/internal/middleware"
-	"github.com/ahmethakanbesel/youtube-video-summary/internal/repository"
-	"github.com/ahmethakanbesel/youtube-video-summary/internal/router"
-	"github.com/ahmethakanbesel/youtube-video-summary/internal/service"
+	"github.com/ahmethakanbesel/youtube-video-summary/internal/transcript"
 	"github.com/ahmethakanbesel/youtube-video-summary/pkg/youtube"
 )
 
@@ -50,9 +48,9 @@ func main() {
 
 	// Initialize packages
 	youtubeClient := youtube.NewClient(apiKey, true, logger)
-	repo := repository.NewInMemTranscript(logger)
-	svc := service.NewTranscript(youtubeClient, repo)
-	rtr := router.NewRouter(svc, uiAssets)
+	repo := transcript.NewMemoryRepository(logger)
+	svc := transcript.NewService(youtubeClient, repo)
+	rtr := transcript.NewRouter(svc, uiAssets)
 
 	// Middleware
 	mw := middleware.NewMiddleware(logger)

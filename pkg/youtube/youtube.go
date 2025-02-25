@@ -207,7 +207,7 @@ type playerResponse struct {
 		} `json:"playerCaptionsTracklistRenderer"`
 	} `json:"captions"`
 	VideoDetails struct {
-		Title string `json:"title"` // Added to capture video title
+		Title string `json:"title"`
 	} `json:"videoDetails"`
 }
 
